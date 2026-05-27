@@ -1,4 +1,4 @@
-# Aiven
+# AIVEN
 
 Aiven is a lightweight LLM chatbot with inference logging, near-real-time ingestion, and dashboard-style observability.
 
@@ -15,7 +15,7 @@ Aiven is a lightweight LLM chatbot with inference logging, near-real-time ingest
 
 The current deployment is intentionally simple:
 
-- `frontend-next` provides the UI
+- `frontend` provides the UI
 - `backend` serves the API, chat endpoints, and storage layer
 - SQLite stores conversations and inference logs
 - Ingestion is handled inline when Redis is not used
