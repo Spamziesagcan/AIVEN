@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - .env
+    environment:
+      REDIS_URL: ""
+      OLLIVE_DB_PATH: /data/ollive.sqlite3
+      OLLIVE_EVENT_PROCESS_INLINE: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ollive-data:/data
+
+  frontend:
+    build:
+      context: ./frontend-next
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE: http://localhost:8000
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  ollive-data:
